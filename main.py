@@ -4,6 +4,8 @@ from discord.ext import commands
 import requests
 import html
 import re
+from flask import Flask
+from threading import Thread
 
 # ===== НАСТРОЙКИ =====
 USER_TOKEN = os.environ["DISCORD_TOKEN"]
@@ -105,5 +107,18 @@ async def on_message(message):
         f"<b>УПОМИНАНИЕ</b>\n\n<code>{safe}</code>",
         message.jump_url,
     )
+
+# ===== FLASK WEB SERVER ДЛЯ RENDER =====
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Bot is alive"
+
+def run_web():
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port, debug=False)
+
+Thread(target=run_web, daemon=True).start()
 
 client.run(USER_TOKEN)
