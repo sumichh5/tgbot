@@ -8,7 +8,7 @@ import re
 # ===== НАСТРОЙКИ =====
 USER_TOKEN = os.environ["DISCORD_TOKEN"]
 TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
-TELEGRAM_CHAT_ID = "948828396"
+TELEGRAM_CHAT_ID = "TELEGRAM_CHAT_ID"
 
 MY_NAMES = ["Smurfik_Kryzov", "Scydo", "scydoz", "905581302571470848"]
 
